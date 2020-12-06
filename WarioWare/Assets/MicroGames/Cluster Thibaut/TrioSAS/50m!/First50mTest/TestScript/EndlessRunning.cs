@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Running : MonoBehaviour
+public class EndlessRunning : MonoBehaviour
 {
     public Transform PlatformObj;
     private Vector3 nextTileSpawn;
