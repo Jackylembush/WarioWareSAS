@@ -6,11 +6,15 @@ public class CharacterAdvance : MonoBehaviour
 {
     private bool p1;
     private bool p2;
+    private int playerCount;
+   // private bool playerEnd; 
 
     void Start()
     {
         p1 = false;
         p2 = false;
+       // playerEnd = false;
+        playerCount = 0;
     }
 
     // Update is called once per frame
@@ -30,6 +34,13 @@ public class CharacterAdvance : MonoBehaviour
             Debug.Log("Pas droit");
             p2 = true;
             p1 = false;
+            playerCount += 1;
+        }
+
+        if (playerCount == 10)
+        {
+            //playerEnd = true;
+                Debug.Log("You won");
         }
     }
 }
