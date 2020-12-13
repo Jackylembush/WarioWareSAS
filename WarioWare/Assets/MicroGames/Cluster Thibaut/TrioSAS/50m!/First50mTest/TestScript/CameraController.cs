@@ -28,8 +28,8 @@ public class CameraController : MonoBehaviour
 
     IEnumerator run()
     {      
-        GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 10);
-        yield return new WaitForSeconds(0.1f);
+        GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 15);
+        yield return new WaitForSeconds(0.05f);
         GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
     }
 }

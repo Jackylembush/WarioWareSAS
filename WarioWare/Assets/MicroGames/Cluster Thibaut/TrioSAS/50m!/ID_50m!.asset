@@ -17,7 +17,9 @@ MonoBehaviour:
   haptiqueChal: 0
   inputChal: 0
   indexEnum: 3
+  verbe: Courrez !
   microGameScene:
     sceneAsset: {fileID: 102900000, guid: aa3e65aa857524040a23b39a4299f06e, type: 3}
-    required: 1
+    required: 0
     buildIndex: 3
+  currentDifficulty: 0
