@@ -13,6 +13,7 @@ namespace TrioSAS
         
         public class PlayerControllerResult : TimedBehaviour
         {
+            public AnimateCannonBall anim;
             public bool winningCondition;
 
             public override void Start()
@@ -32,12 +33,15 @@ namespace TrioSAS
                     if (winningCondition == true)
                     {
                         Debug.Log("You Win");
+                        anim.ActivateAnimation();
                         Manager.Instance.Result(true);
+                        
                     }
                     else
                     {
                         Debug.Log("You lose");
                         Manager.Instance.Result(false);
+                        
                     }
                 }
 
@@ -47,6 +51,7 @@ namespace TrioSAS
                     if (winningCondition == true)
                     {
                         Debug.Log("You Win");
+                        anim.ActivateAnimation();
                         Manager.Instance.Result(true);
                     }
                     else
