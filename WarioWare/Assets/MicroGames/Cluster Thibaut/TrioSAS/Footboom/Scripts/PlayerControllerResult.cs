@@ -15,11 +15,25 @@ namespace TrioSAS
         {
             public AnimateCannonBall anim;
             public bool winningCondition;
+            public SuccessZoneSize difficulty;
+            private bool endGame;
 
             public override void Start()
             {
                 base.Start(); //Do not erase this line!
 
+                switch(currentDifficulty)
+                {
+                    case Manager.Difficulty.EASY:
+                        difficulty.SizeEasy();
+                        break;
+                    case Manager.Difficulty.MEDIUM:
+                        difficulty.SizeMedium();
+                        break;
+                    case Manager.Difficulty.HARD:
+                        difficulty.SizeHard();
+                        break;
+                }
             }
 
             //FixedUpdate is called on a fixed time.
@@ -27,14 +41,15 @@ namespace TrioSAS
             {
                 base.FixedUpdate(); //Do not erase this line!
 
-                if (Input.GetButtonDown("A_Button"))
+                if (Input.GetButton("A_Button") && endGame == false)
                 {
                     gameObject.GetComponent<BarMovement>().barSpeed = 0;
                     if (winningCondition == true)
                     {
                         Debug.Log("You Win");
-                        anim.ActivateAnimation();
                         Manager.Instance.Result(true);
+                        anim.ActivateAnimation();
+                        
                         
                     }
                     else
@@ -43,27 +58,29 @@ namespace TrioSAS
                         Manager.Instance.Result(false);
                         
                     }
+                    endGame = true;
                 }
-
-                if (Input.GetKeyDown("space"))
+                if (Input.GetKey("space") && endGame == false)
                 {
                     gameObject.GetComponent<BarMovement>().barSpeed = 0;
                     if (winningCondition == true)
                     {
                         Debug.Log("You Win");
-                        anim.ActivateAnimation();
                         Manager.Instance.Result(true);
+                        anim.ActivateAnimation();
+                       
                     }
                     else
                     {
                         Debug.Log("You lose");
                         Manager.Instance.Result(false);
                     }
+                    endGame = true;
                 }
-
-                if (Tick == 8)
+                if (Tick == 8 && endGame == false)
                 {
                     Manager.Instance.Result(false);
+                    endGame = true;
                 }
 
             }

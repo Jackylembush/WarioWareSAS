@@ -13,12 +13,31 @@ namespace TrioSAS
         public class SuccessZoneSize : MonoBehaviour
         {
             public RectTransform rectTransform;
-            public float heightModifier;
+            public float heightModifierEasy;
+            public float heightModifierHard;
+            public BoxCollider2D boxColli;
 
             void Start()
             {
                 rectTransform = GetComponent<RectTransform>();
-                rectTransform.sizeDelta = new Vector2(rectTransform.sizeDelta.x, rectTransform.sizeDelta.y* heightModifier);
+                boxColli = GetComponent<BoxCollider2D>();
+            }
+
+            public void SizeEasy()
+            {
+                rectTransform.sizeDelta = new Vector2(rectTransform.sizeDelta.x, rectTransform.sizeDelta.y * heightModifierEasy);
+                boxColli.size = new Vector2(rectTransform.sizeDelta.x, rectTransform.sizeDelta.y);
+            }
+
+            public void SizeHard()
+            {
+                rectTransform.sizeDelta = new Vector2(rectTransform.sizeDelta.x, rectTransform.sizeDelta.y * heightModifierHard);
+                boxColli.size = new Vector2(rectTransform.sizeDelta.x, rectTransform.sizeDelta.y);
+            }
+
+            public void SizeMedium()
+            {
+                boxColli.size = new Vector2(rectTransform.sizeDelta.x, rectTransform.sizeDelta.y);
             }
         }
     }

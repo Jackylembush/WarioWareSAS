@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -278,6 +278,7 @@ MonoBehaviour:
   currentTime: 0
   anim: {fileID: 617460175}
   winningCondition: 0
+  difficulty: {fileID: 1201438784}
 --- !u!1 &617460171
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,7 +404,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 7350093145695996453, guid: e64107dc55bbcdd499321c09551e1272,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: e0f39e4841660a2439a9e937e53afb2a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 140890297dd96794098aa2c0c7172eb8, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -784,8 +785,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a56077abce88be44eabe61cc059056a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rectTransform: {fileID: 0}
-  heightModifier: 2
+  rectTransform: {fileID: 1201438780}
+  heightModifierEasy: 2
+  heightModifierHard: 0.5
+  boxColli: {fileID: 1201438781}
 --- !u!1 &1441702573
 GameObject:
   m_ObjectHideFlags: 0
