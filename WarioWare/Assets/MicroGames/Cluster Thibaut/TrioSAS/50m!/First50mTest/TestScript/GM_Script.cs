@@ -39,6 +39,7 @@ public class GM_Script : TimedBehaviour
 
     }
 
+    //Win Condition
     private void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.name == "Tower")
@@ -50,6 +51,7 @@ public class GM_Script : TimedBehaviour
         }
     }
 
+    //Lose Condition
     public override void TimedUpdate()
     {
         base.TimedUpdate();
