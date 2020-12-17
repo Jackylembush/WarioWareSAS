@@ -17,6 +17,7 @@ namespace TrioSAS
             public bool winningCondition;
             public SuccessZoneSize difficulty;
             private bool endGame;
+            public FailAnimate failure;
 
             public override void Start()
             {
@@ -56,7 +57,7 @@ namespace TrioSAS
                     {
                         Debug.Log("You lose");
                         Manager.Instance.Result(false);
-                        
+                        failure.ActivateFail();
                     }
                     endGame = true;
                 }
@@ -74,12 +75,14 @@ namespace TrioSAS
                     {
                         Debug.Log("You lose");
                         Manager.Instance.Result(false);
+                        failure.ActivateFail();
                     }
                     endGame = true;
                 }
                 if (Tick == 8 && endGame == false)
                 {
                     Manager.Instance.Result(false);
+                    failure.ActivateFail();
                     endGame = true;
                 }
 

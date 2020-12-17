@@ -9,21 +9,23 @@ namespace TrioSAS
         public class AnimateCannonBall : MonoBehaviour
         {
             public Animation anim;
-            public AudioSource audio;
+            public AudioSource launch;
+
 
             public void Start()
             {
                 anim = gameObject.GetComponent<Animation>();
-                audio = gameObject.GetComponent<AudioSource>();
+                launch = gameObject.GetComponent<AudioSource>();
+                
             }
 
             public void ActivateAnimation()
             {
                 anim.Play();
-                audio.Play();
+                launch.Play();
             }
 
-
+            
         }
     }
 }
