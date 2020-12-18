@@ -7,11 +7,12 @@ namespace SAS
 {
     namespace Cinquante
     {
-        public class TestTimedScript : TimedBehaviour
+        public class GM_Script : TimedBehaviour
         {
             private bool p1;
             private bool p2;
-            private int playerCount;
+            private bool win;
+            private bool lose;
             public GameObject YouLose;
             public GameObject YouWin;
 
@@ -21,7 +22,8 @@ namespace SAS
 
                 p1 = false;
                 p2 = false;
-                playerCount = 0;
+                win = false;
+                lose = false;
             }
 
             //FixedUpdate is called on a fixed time.
@@ -43,19 +45,19 @@ namespace SAS
                     Debug.Log("Pas droit");
                     p2 = true;
                     p1 = false;
-                    playerCount += 1;
                 }
             }
 
+
+            #region Winning Condition
             //Win Condition
             private void OnTriggerEnter(Collider col)
             {
-                if (col.gameObject.name == "Tower")
+                if (col.gameObject.name == "Tower" && lose == false)
                 {
-
-                    Debug.Log("You won");
-                    YouWin.SetActive(true);
+                    win = true;
                     Manager.Instance.Result(true);
+                    YouWin.SetActive(true);
                 }
             }
 
@@ -66,13 +68,16 @@ namespace SAS
             {
                 base.TimedUpdate();
 
-                if (Tick == 8)
+                if (Tick == 8 && win == false)
                 {
-                    Debug.Log("You lose");
+                    lose = true;
                     YouLose.SetActive(true);
                     Manager.Instance.Result(false);
                 }
             }
+            #endregion 
+
+           
         }
     }
 }
