@@ -16,6 +16,7 @@ namespace TrioSAS
             public AnimateCannonBall anim;
             public bool winningCondition;
             public SuccessZoneSize difficulty;
+            public BarMovement speedBpm;
             private bool endGame;
             public FailAnimate failure;
 
@@ -33,6 +34,22 @@ namespace TrioSAS
                         break;
                     case Manager.Difficulty.HARD:
                         difficulty.SizeHard();
+                        break;
+                }
+
+                switch(bpm)
+                {
+                    case (float)Manager.BPM.Slow:
+                        speedBpm.speedSlow();
+                        break;
+                    case (float)Manager.BPM.Medium:
+                        speedBpm.speedMedium();
+                        break;
+                    case (float)Manager.BPM.Fast:
+                        speedBpm.speedFast();
+                        break;
+                    case (float)Manager.BPM.SuperFast:
+                        speedBpm.speedVeryFast();
                         break;
                 }
             }
