@@ -1,57 +1,53 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Testing;
 using UnityEngine;
 
 public class Controller : TimedBehaviour
 {
-    private int speed;
-    private Rigidbody rb;
+    private float speed;
+    private float speedIncrementation;
 
     public override void Start()
     {
         base.Start(); //Do not erase this line!
 
-        rb = GetComponent<Rigidbody>();
+        speed = 0f; 
 
-        switch(currentDifficulty)
+        switch (currentDifficulty)
         {
             case Difficulty.EASY:
-                speed = 15;
+                speedIncrementation = 0.75f;
                 break;
 
             case Difficulty.MEDIUM:
-                speed = 13;
+                speedIncrementation = 0.5f;
                 break;
 
             case Difficulty.HARD:
-                speed = 11;
+                speedIncrementation = 0.4f;
                 break;
         }
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            StartCoroutine(run());
-        }
+        speed -= (speed/2) * Time.deltaTime;
+        speed = Mathf.Max(0f, speed);
+        PlayerMovement();
+        //Debug.Log(speed);
+    }
 
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            StartCoroutine(run());
-        }
+    private void PlayerMovement()
+    {
+        transform.Translate(Vector3.forward * speed * Time.deltaTime, Space.World);
+    }
+
+    public void PlayerInput()
+    {
+        speed += speedIncrementation;
     }
 
 
-    IEnumerator run()
-    {      
-        rb.velocity = new Vector3(0, 0, speed);
-        yield return new WaitForSeconds(0.05f);
-        rb.velocity = new Vector3(0, 0, 0);
-    }
-
-   
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Testing;
+using UnityEditor.Build.Reporting;
 
 namespace SAS
 {
@@ -13,12 +14,25 @@ namespace SAS
             private bool p2;
             private bool win;
             private bool lose;
+            public float stepDistance = 1.5f;
+            private float startPositionZ;
+            private int stepCount = 1;
+            private bool currentStepRight; 
+            
             public GameObject YouLose;
             public GameObject YouWin;
+
+            public GameObject piedG;
+            public GameObject piedD;
+
+            public Controller controllerScript;
 
             public override void Start()
             {
                 base.Start(); //Do not erase this line!
+
+                startPositionZ = transform.position.z;
+
 
                 p1 = false;
                 p2 = false;
@@ -27,27 +41,51 @@ namespace SAS
             }
 
             //FixedUpdate is called on a fixed time.
-            public override void FixedUpdate()
+            public void Update()
             {
-                base.FixedUpdate(); //Do not erase this line!
 
                 //A = Gachette gauche
                 if (Input.GetKeyDown(KeyCode.A) && p1 == false)
                 {
-                    Debug.Log("Pas gauche");
+                    controllerScript.PlayerInput();
                     p1 = true;
                     p2 = false;
+                    //Debug.Log("Pas gauche");
                 }
 
                 //Z = Gachette droite
                 if (Input.GetKeyDown(KeyCode.Z) && p2 == false)
                 {
-                    Debug.Log("Pas droit");
+                    controllerScript.PlayerInput();
                     p2 = true;
                     p1 = false;
+                    //Debug.Log("Pas droit");
                 }
+
+                FootManagement();
             }
 
+            private void FootManagement()
+            {
+                if (transform.position.z > startPositionZ + (stepDistance * stepCount))
+                {
+                    stepCount++;
+
+                    if (currentStepRight)
+                    {
+                        piedG.SetActive(true);
+                        piedD.SetActive(false);
+                    }
+
+                    else
+                    {
+                        piedG.SetActive(false);
+                        piedD.SetActive(true);
+                    }
+
+                    currentStepRight = !currentStepRight;
+                }
+            }
 
             #region Winning Condition
             //Win Condition
@@ -55,9 +93,10 @@ namespace SAS
             {
                 if (col.gameObject.name == "Tower" && lose == false)
                 {
+                    //Debug.Log("OnTriggerEnter Tower");
                     win = true;
+                    //YouWin.SetActive(true);
                     Manager.Instance.Result(true);
-                    YouWin.SetActive(true);
                 }
             }
 
@@ -71,7 +110,7 @@ namespace SAS
                 if (Tick == 8 && win == false)
                 {
                     lose = true;
-                    YouLose.SetActive(true);
+                    //YouLose.SetActive(true);
                     Manager.Instance.Result(false);
                 }
             }
