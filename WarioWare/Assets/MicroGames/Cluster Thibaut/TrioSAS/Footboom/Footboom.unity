@@ -807,7 +807,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barSpeed: 150
-  modifierSlow: 0.5
+  modifierSlow: 0.75
   modifierFast: 1.5
   modifierVeryFast: 1.75
 --- !u!61 &533542994
@@ -2045,8 +2045,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.738, y: -1.156}
-  m_SizeDelta: {x: 13.7519, y: 11.758817}
+  m_AnchoredPosition: {x: -1.1844, y: 0.0000018924}
+  m_SizeDelta: {x: 13.7519, y: 18.698711}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!61 &1201438781
 BoxCollider2D:
@@ -2061,7 +2061,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.120770454, y: 0.048347473}
+  m_Offset: {x: 0.120770454, y: 0.048355103}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2072,7 +2072,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 13.72748, y: 11.937851}
+  m_Size: {x: 13.72748, y: 18.376068}
   m_EdgeRadius: 0
 --- !u!114 &1201438782
 MonoBehaviour:

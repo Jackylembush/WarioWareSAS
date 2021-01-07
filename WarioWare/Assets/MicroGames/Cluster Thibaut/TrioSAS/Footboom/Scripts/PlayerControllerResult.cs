@@ -64,7 +64,6 @@ namespace TrioSAS
                     gameObject.GetComponent<BarMovement>().barSpeed = 0;
                     if (winningCondition == true)
                     {
-                        Debug.Log("You Win");
                         Manager.Instance.Result(true);
                         anim.ActivateAnimation();
                         
@@ -72,7 +71,6 @@ namespace TrioSAS
                     }
                     else
                     {
-                        Debug.Log("You lose");
                         Manager.Instance.Result(false);
                         failure.ActivateFail();
                     }
@@ -83,14 +81,13 @@ namespace TrioSAS
                     gameObject.GetComponent<BarMovement>().barSpeed = 0;
                     if (winningCondition == true)
                     {
-                        Debug.Log("You Win");
                         Manager.Instance.Result(true);
                         anim.ActivateAnimation();
                        
                     }
                     else
                     {
-                        Debug.Log("You lose");
+                        
                         Manager.Instance.Result(false);
                         failure.ActivateFail();
                     }
@@ -98,6 +95,7 @@ namespace TrioSAS
                 }
                 if (Tick == 8 && endGame == false)
                 {
+                    gameObject.GetComponent<BarMovement>().barSpeed = 0;
                     Manager.Instance.Result(false);
                     failure.ActivateFail();
                     endGame = true;
