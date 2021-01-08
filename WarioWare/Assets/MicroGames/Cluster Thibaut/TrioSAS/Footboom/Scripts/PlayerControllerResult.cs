@@ -19,6 +19,7 @@ namespace TrioSAS
             public BarMovement speedBpm;
             private bool endGame;
             public FailAnimate failure;
+            public Animator explosion;
 
             public override void Start()
             {
@@ -66,8 +67,8 @@ namespace TrioSAS
                     {
                         Manager.Instance.Result(true);
                         anim.ActivateAnimation();
-                        
-                        
+                        explosion.SetBool("setActive", true);
+                        ///explosion.SetBool("setActive", false);
                     }
                     else
                     {
@@ -83,7 +84,9 @@ namespace TrioSAS
                     {
                         Manager.Instance.Result(true);
                         anim.ActivateAnimation();
-                       
+                        explosion.SetBool("setActive", true);
+                        ///explosion.SetBool("setActive", false);
+
                     }
                     else
                     {
