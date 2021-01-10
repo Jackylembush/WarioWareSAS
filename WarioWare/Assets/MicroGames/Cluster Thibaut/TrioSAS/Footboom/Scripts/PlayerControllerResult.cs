@@ -27,29 +27,29 @@ namespace TrioSAS
 
                 switch(currentDifficulty)
                 {
-                    case Manager.Difficulty.EASY:
+                    case Difficulty.EASY:
                         difficulty.SizeEasy();
                         break;
-                    case Manager.Difficulty.MEDIUM:
+                    case Difficulty.MEDIUM:
                         difficulty.SizeMedium();
                         break;
-                    case Manager.Difficulty.HARD:
+                    case Difficulty.HARD:
                         difficulty.SizeHard();
                         break;
                 }
 
                 switch(bpm)
                 {
-                    case (float)Manager.BPM.Slow:
+                    case (float)BPM.Slow:
                         speedBpm.speedSlow();
                         break;
-                    case (float)Manager.BPM.Medium:
+                    case (float)BPM.Medium:
                         speedBpm.speedMedium();
                         break;
-                    case (float)Manager.BPM.Fast:
+                    case (float)BPM.Fast:
                         speedBpm.speedFast();
                         break;
-                    case (float)Manager.BPM.SuperFast:
+                    case (float)BPM.SuperFast:
                         speedBpm.speedVeryFast();
                         break;
                 }
