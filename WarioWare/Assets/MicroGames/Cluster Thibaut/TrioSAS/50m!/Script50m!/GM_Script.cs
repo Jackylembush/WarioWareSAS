@@ -4,6 +4,7 @@ using UnityEngine;
 using Testing;
 using UnityEditor.Build.Reporting;
 
+
 namespace SAS
 {
     namespace Cinquante
@@ -33,7 +34,6 @@ namespace SAS
 
                 startPositionZ = transform.position.z;
 
-
                 p1 = false;
                 p2 = false;
                 win = false;
@@ -45,7 +45,7 @@ namespace SAS
             {
 
                 //A = Gachette gauche
-                if (Input.GetKeyDown(KeyCode.A) && p1 == false)
+                if (Input.GetKey(KeyCode.A) && p1 == false)
                 {
                     controllerScript.PlayerInput();
                     p1 = true;
@@ -73,14 +73,14 @@ namespace SAS
 
                     if (currentStepRight)
                     {
-                        piedG.SetActive(true);
-                        piedD.SetActive(false);
+                      //piedG.SetActive(true);
+                      //piedD.SetActive(false);
                     }
 
                     else
                     {
-                        piedG.SetActive(false);
-                        piedD.SetActive(true);
+                       //piedG.SetActive(false);
+                       //piedD.SetActive(true);
                     }
 
                     currentStepRight = !currentStepRight;
@@ -97,6 +97,7 @@ namespace SAS
                     win = true;
                     //YouWin.SetActive(true);
                     Manager.Instance.Result(true);
+                    controllerScript.PlayerStop();
                 }
             }
 
@@ -112,6 +113,7 @@ namespace SAS
                     lose = true;
                     //YouLose.SetActive(true);
                     Manager.Instance.Result(false);
+                    controllerScript.PlayerStop();
                 }
             }
             #endregion 
