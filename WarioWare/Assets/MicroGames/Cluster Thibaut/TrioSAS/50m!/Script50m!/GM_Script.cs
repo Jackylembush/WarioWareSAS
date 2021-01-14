@@ -45,7 +45,7 @@ namespace SAS
             {
 
                 //A = Gachette gauche
-                if (Input.GetKey(KeyCode.A) && p1 == false)
+                if (Input.GetAxis("Left_Trigger") == 1f && p1 == false)
                 {
                     controllerScript.PlayerInput();
                     p1 = true;
@@ -54,12 +54,17 @@ namespace SAS
                 }
 
                 //Z = Gachette droite
-                if (Input.GetKeyDown(KeyCode.Z) && p2 == false)
+                if (Input.GetAxis("Right_Trigger") == 1f && p2 == false)
                 {
                     controllerScript.PlayerInput();
                     p2 = true;
                     p1 = false;
                     //Debug.Log("Pas droit");
+                }
+
+                if (Input.GetAxis("Left_Trigger")== 1f && Input.GetAxis("Right_Trigger") == 1f)
+                {
+                    controllerScript.PlayerStop();
                 }
 
                 FootManagement();

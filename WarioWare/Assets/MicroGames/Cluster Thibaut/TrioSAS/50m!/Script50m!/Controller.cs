@@ -16,15 +16,15 @@ public class Controller : TimedBehaviour
         switch (currentDifficulty)
         {
             case Difficulty.EASY:
-                speedIncrementation = 1.6f;
+                speedIncrementation = 2.8f;
                 break;
 
             case Difficulty.MEDIUM:
-                speedIncrementation = 1.4f;
+                speedIncrementation = 2.6f;
                 break;
 
             case Difficulty.HARD:
-                speedIncrementation = 1.2f;
+                speedIncrementation = 2.4f;
                 break;
         }
 
@@ -52,6 +52,5 @@ public class Controller : TimedBehaviour
     public void PlayerStop()
     {
         speed = 0;
-        speedIncrementation = 0;
     }
 }
