@@ -53,4 +53,11 @@ public class Controller : TimedBehaviour
     {
         speed = 0;
     }
+
+    public void PlayerEnd()
+    {
+        speed = 0;
+        speedIncrementation = 0;
+            
+    }
 }

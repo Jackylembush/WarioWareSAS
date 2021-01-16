@@ -102,7 +102,7 @@ namespace SAS
                     win = true;
                     //YouWin.SetActive(true);
                     Manager.Instance.Result(true);
-                    controllerScript.PlayerStop();
+                    controllerScript.PlayerEnd();
                 }
             }
 
