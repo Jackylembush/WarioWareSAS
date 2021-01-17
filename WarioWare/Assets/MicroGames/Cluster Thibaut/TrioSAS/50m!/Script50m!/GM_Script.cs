@@ -78,14 +78,14 @@ namespace SAS
 
                     if (currentStepRight)
                     {
-                      //piedG.SetActive(true);
-                      //piedD.SetActive(false);
+                      piedG.SetActive(true);
+                      piedD.SetActive(false);
                     }
 
                     else
                     {
-                       //piedG.SetActive(false);
-                       //piedD.SetActive(true);
+                       piedG.SetActive(false);
+                       piedD.SetActive(true);
                     }
 
                     currentStepRight = !currentStepRight;
