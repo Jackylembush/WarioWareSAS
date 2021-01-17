@@ -96,7 +96,7 @@ namespace SAS
             //Win Condition
             private void OnTriggerEnter(Collider col)
             {
-                if (col.gameObject.name == "Tower" && lose == false)
+                if (col.gameObject.name == "Arrival" && lose == false)
                 {
                     //Debug.Log("OnTriggerEnter Tower");
                     win = true;
