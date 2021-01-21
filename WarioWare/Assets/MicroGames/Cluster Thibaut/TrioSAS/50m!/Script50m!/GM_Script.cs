@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Testing;
 using UnityEditor.Build.Reporting;
-
+using TrioSAS.Cinquante;
+using UnityEditor;
 
 namespace SAS
 {
@@ -28,16 +29,23 @@ namespace SAS
 
             public Controller controllerScript;
 
+            public AudioManagerScript Audio;
+
+            public AnimationScript InputAnimation;
+
             public override void Start()
             {
                 base.Start(); //Do not erase this line!
 
-                startPositionZ = transform.position.z;
 
                 p1 = false;
                 p2 = false;
                 win = false;
                 lose = false;
+
+                controllerScript.MusicScene();
+                InputAnimation.StartScene();
+                Audio.StartScene();
             }
 
             //FixedUpdate is called on a fixed time.
@@ -50,6 +58,9 @@ namespace SAS
                     controllerScript.PlayerInput();
                     p1 = true;
                     p2 = false;
+                    piedG.SetActive(true);
+                    piedD.SetActive(false);
+                    Audio.Running();
                     //Debug.Log("Pas gauche");
                 }
 
@@ -59,6 +70,10 @@ namespace SAS
                     controllerScript.PlayerInput();
                     p2 = true;
                     p1 = false;
+                    piedG.SetActive(false);
+                    piedD.SetActive(true);
+                    
+                    Audio.Running();
                     //Debug.Log("Pas droit");
                 }
 
@@ -72,23 +87,14 @@ namespace SAS
 
             private void FootManagement()
             {
-                if (transform.position.z > startPositionZ + (stepDistance * stepCount))
+                if (controllerScript.speed > 0)
                 {
-                    stepCount++;
+                    Audio.Breath();
+                }
+                
+                else
+                {
 
-                    if (currentStepRight)
-                    {
-                      piedG.SetActive(true);
-                      piedD.SetActive(false);
-                    }
-
-                    else
-                    {
-                       piedG.SetActive(false);
-                       piedD.SetActive(true);
-                    }
-
-                    currentStepRight = !currentStepRight;
                 }
             }
 
@@ -116,7 +122,7 @@ namespace SAS
                 if (Tick == 8 && win == false)
                 {
                     lose = true;
-                    //YouLose.SetActive(true);
+                    Audio.EndScene();
                     Manager.Instance.Result(false);
                     controllerScript.PlayerStop();
                 }
