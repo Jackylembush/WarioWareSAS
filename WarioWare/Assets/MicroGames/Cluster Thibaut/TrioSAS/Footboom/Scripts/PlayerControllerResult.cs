@@ -22,7 +22,7 @@ namespace TrioSAS
             public Animator explosion;
             public Animator kick;
             public GetMusic music;
-
+            public bool youWinner;
             public override void Start()
             {
                 base.Start(); //Do not erase this line!
@@ -74,13 +74,14 @@ namespace TrioSAS
                         anim.ActivateAnimation();
                         explosion.SetBool("setActive", true);
                         kick.SetBool("kick", true);
-                        Manager.Instance.Result(true);
+                        youWinner = true;
                     }
                     else
                     {
                         kick.SetBool("kick", true);
+                        failure.ActivateFail();
                         kick.SetBool("breakFail", true);
-                        Manager.Instance.Result(false);
+                        youWinner = false;
 
                     }
                     endGame = true;
@@ -93,7 +94,7 @@ namespace TrioSAS
                         kick.SetBool("kick", true);
                         anim.ActivateAnimation();
                         explosion.SetBool("setActive", true);
-                        Manager.Instance.Result(true);
+                        youWinner = true;
 
                         ///explosion.SetBool("setActive", false);
 
@@ -101,20 +102,25 @@ namespace TrioSAS
                     else
                     {
                         kick.SetBool("kick", true);
+                        failure.ActivateFail();
                         kick.SetBool("breakFail", true);
-                        Manager.Instance.Result(false);
+                        youWinner = false;
 
                     }
                     endGame = true;
+
                 }
-                if (Tick == 8 && endGame == false)
+                if (Tick == 8 && youWinner == false)
                 {
-                    kick.SetBool("kick", true);
-                    kick.SetBool("breakFail", true);
+                    endGame = true;
                     gameObject.GetComponent<BarMovement>().barSpeed = 0;
                     Manager.Instance.Result(false);
 
+                }
+                else if (Tick == 8 && youWinner == true)
+                {
                     endGame = true;
+                    Manager.Instance.Result(true);
                 }
 
             }
