@@ -20,6 +20,7 @@ namespace TrioSAS
             private bool endGame;
             public FailAnimate failure;
             public Animator explosion;
+            public Animator kick;
 
             public override void Start()
             {
@@ -65,15 +66,17 @@ namespace TrioSAS
                     gameObject.GetComponent<BarMovement>().barSpeed = 0;
                     if (winningCondition == true)
                     {
-                        Manager.Instance.Result(true);
                         anim.ActivateAnimation();
                         explosion.SetBool("setActive", true);
-                        ///explosion.SetBool("setActive", false);
+                        kick.SetBool("kick", true);
+                        Manager.Instance.Result(true);
                     }
                     else
                     {
+                        kick.SetBool("kick", true);
+                        kick.SetBool("breakFail", true);
                         Manager.Instance.Result(false);
-                        failure.ActivateFail();
+
                     }
                     endGame = true;
                 }
@@ -82,25 +85,30 @@ namespace TrioSAS
                     gameObject.GetComponent<BarMovement>().barSpeed = 0;
                     if (winningCondition == true)
                     {
-                        Manager.Instance.Result(true);
+                        kick.SetBool("kick", true);
                         anim.ActivateAnimation();
                         explosion.SetBool("setActive", true);
+                        Manager.Instance.Result(true);
+
                         ///explosion.SetBool("setActive", false);
 
                     }
                     else
                     {
-                        
+                        kick.SetBool("kick", true);
+                        kick.SetBool("breakFail", true);
                         Manager.Instance.Result(false);
-                        failure.ActivateFail();
+
                     }
                     endGame = true;
                 }
                 if (Tick == 8 && endGame == false)
                 {
+                    kick.SetBool("kick", true);
+                    kick.SetBool("breakFail", true);
                     gameObject.GetComponent<BarMovement>().barSpeed = 0;
                     Manager.Instance.Result(false);
-                    failure.ActivateFail();
+
                     endGame = true;
                 }
 
