@@ -21,6 +21,7 @@ namespace TrioSAS
             public FailAnimate failure;
             public Animator explosion;
             public Animator kick;
+            public GetMusic music;
 
             public override void Start()
             {
@@ -42,15 +43,19 @@ namespace TrioSAS
                 switch(bpm)
                 {
                     case (float)BPM.Slow:
+                        music.Maestro60();
                         speedBpm.speedSlow();
                         break;
                     case (float)BPM.Medium:
+                        music.Maestro80();
                         speedBpm.speedMedium();
                         break;
                     case (float)BPM.Fast:
+                        music.Maestro100();
                         speedBpm.speedFast();
                         break;
                     case (float)BPM.SuperFast:
+                        music.Maestro120();
                         speedBpm.speedVeryFast();
                         break;
                 }
