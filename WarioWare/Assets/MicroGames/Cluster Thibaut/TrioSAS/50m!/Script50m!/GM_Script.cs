@@ -43,7 +43,6 @@ namespace SAS
                 win = false;
                 lose = false;
 
-                controllerScript.MusicScene();
                 InputAnimation.StartScene();
                 Audio.StartScene();
             }
@@ -87,15 +86,7 @@ namespace SAS
 
             private void FootManagement()
             {
-                if (controllerScript.speed > 0)
-                {
-                    Audio.Breath();
-                }
                 
-                else
-                {
-
-                }
             }
 
             #region Winning Condition

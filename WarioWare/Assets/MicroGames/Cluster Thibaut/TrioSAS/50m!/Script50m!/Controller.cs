@@ -6,19 +6,13 @@ public class Controller : TimedBehaviour
 {
     public float speed;
     private float speedIncrementation;
-    private AudioSource Music;
-
-    public AudioSource Run_60Bpm;
-    public AudioSource Run_80Bpm;
-    public AudioSource Run_100Bpm;
+    
 
     public override void Start()
     {
         base.Start(); //Do not erase this line!
 
         speed = 0f;
-
-        Music = Run_80Bpm;
 
         switch (currentDifficulty)
         {
@@ -59,11 +53,6 @@ public class Controller : TimedBehaviour
     public void PlayerStop()
     {
         speed = 0;
-    }
-
-    public void MusicScene()
-    {
-        Music.Play();
     }
 
     public void PlayerEnd()
