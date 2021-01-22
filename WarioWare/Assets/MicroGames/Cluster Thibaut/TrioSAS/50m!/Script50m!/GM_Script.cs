@@ -5,6 +5,7 @@ using Testing;
 using UnityEditor.Build.Reporting;
 using TrioSAS.Cinquante;
 using UnityEditor;
+using TrioName.MiniGameName;
 
 namespace SAS
 {
@@ -28,10 +29,9 @@ namespace SAS
             public GameObject piedD;
 
             public Controller controllerScript;
-
             public AudioManagerScript Audio;
-
             public AnimationScript InputAnimation;
+            public CameraShakeScript Shake;
 
             public override void Start()
             {
@@ -79,6 +79,8 @@ namespace SAS
                 if (Input.GetAxis("Left_Trigger")== 1f && Input.GetAxis("Right_Trigger") == 1f)
                 {
                     controllerScript.PlayerStop();
+                    Audio.StopRunning();
+                    StartCoroutine(Shake.Shake(0.1f, 0.05f));
                 }
 
                 FootManagement();

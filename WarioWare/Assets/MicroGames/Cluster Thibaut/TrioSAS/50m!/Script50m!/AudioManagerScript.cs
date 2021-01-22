@@ -68,6 +68,11 @@ namespace TrioSAS
                 StepSound.Play();
             }
 
+            public void StopRunning()
+            {
+                StepSound.Stop();
+            }
+
             public void Breath()
             {
                 //BreathSound.PlayOneShot(BreathMoment, 0.3f);            
